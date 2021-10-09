@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "test online tlab",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server",
+    "db_migrate": "./node_modules/sequelize-cli/lib/sequelize db:migrate sync",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rico tritanto",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.12",
+    "sequelize": "^6.6.5",
+    "sequelize-auto": "^0.8.4",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}

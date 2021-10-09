@@ -1,0 +1,39 @@
+version: '3.0'
+services:
+    tlab-be:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        working_dir: /home/tlab/src
+        container_name: tlab-be
+        depends_on:
+            - mariadb-tlab
+        volumes:
+            - .:/home/tlab/src
+        ports:
+            - 3001:3001
+        networks:
+            - tlab-network
+        tty: true
+    mariadb-tlab:
+        container_name: mariadb-tlab
+        restart: always
+        image: mariadb:10.5
+        environment:
+            MARIADB_DATABASE: 'tlab'
+            MARIADB_ROOT_PASSWORD: 'passroot'
+            MARIADB_USER: 'user_name'
+            MARIADB_PASS: 'user_pass'
+            TZ: 'Asia/Jakarta'
+        volumes:
+            - tlab-db-vol:/var/lib/mysql
+        ports:
+            - "3310:3306"
+        networks:
+            - tlab-network
+volumes:
+    tlab-db-vol:
+        driver: local
+networks:
+    tlab-network:
+        driver: bridge
